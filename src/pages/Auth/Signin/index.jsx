@@ -23,25 +23,24 @@ function Signin() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          user: {
             username: username,
             password: password
-          }
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        Cookies.set('token', response.headers.get("Authorization"));
-        Cookies.set('id', data.user.id);
+        Cookies.set('token', data.accessToken);
+        Cookies.set('username', data.username);
+        Cookies.set('id', data.id);
         setUser({
           isLoggedIn: true,
-          token: response.headers.get("Authorization"),
-          id: data.user.id
+          token: data.accessToken,
+          id: data.id,
+          username: data.username
         });
         navigate('/')
         console.log("authentification réussie");
-        console.log(response.headers.get("Authorization"));
       } else {
         setError('Identifiants invalides');
       }
@@ -53,7 +52,6 @@ function Signin() {
   return (
     <div className="col-md-12">
       <Form onSubmit={handleSignin}>
-        <h3> Connexion </h3>
         <Form.Group controlId="formBasicUsername">
           {error && <p>{error}</p>}
           <Form.Control
@@ -74,7 +72,7 @@ function Signin() {
           />
         </Form.Group>
         <div>
-          <Button type="submit">Se connecter</Button>
+          <Button type="submit">Sign in</Button>
         </div>
       </Form>
     </div>

@@ -33,17 +33,21 @@ function Signup () {
           }
         ),
       });
+      console.log('After fetch request');
 
-      if (response.status === 200) {
+      if (response.ok) {
         const data = await response.json();
 
-        Cookies.set('token', response.headers.get("Authorization"));
-        Cookies.set('id', data.user.id);
+        Cookies.set('token', data.accessToken);
+        Cookies.set('id', data.id);
+        Cookies.set('username', data.username);
+        
         console.log(data)
         setUser({
           isLoggedIn: true,
-          token: response.headers.get("Authorization"),
-          id: data.user.id
+          token: data.accessToken,
+          id: data.id,
+          username: data.username
         });
 
         navigate('/')
@@ -52,6 +56,7 @@ function Signup () {
         setError(errorData.message);
       }
     } catch (error) {
+      console.log('Error object:', error);
       setError('Erreur');
     }
   };
@@ -59,7 +64,6 @@ function Signup () {
   return (
     <div className="body center-form" >
       <Form onSubmit={handleSubmit}>
-      <div className="form-title">Créer un compte</div>
       <Form.Group controlId="formBasicUsername">
         {error && <p>{error}</p>}
         <Form.Control
@@ -94,7 +98,7 @@ function Signup () {
       </Form.Group>
 
       <div className="center-button">
-      <Button className="submit-button" type="submit">Créer et se connecter </Button>
+      <Button className="submit-button" type="submit">Sign up and log in </Button>
       </div>
     </Form>
   </div>
