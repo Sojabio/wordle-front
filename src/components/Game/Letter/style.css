@@ -1,9 +1,8 @@
 .letter {
-  flex: 33%;
-  height: 100%;
+  width: 3rem;
+  height: 3rem;
   border: 1px solid grey;
   margin: 5px;
-  display: grid;
   place-items: center;
   font-size: 30px;
   font-weight: bolder;

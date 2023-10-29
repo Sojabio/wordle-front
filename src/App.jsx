@@ -5,6 +5,8 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from './stores/userAtom';
 import { useEffect } from 'react';
+import { gameWonAtom } from './stores/gameAtoms'
+
 import Cookies from 'js-cookie';
 
 
@@ -25,8 +27,10 @@ import Unauthorized from './pages/Auth/Unauthorized';
 function App() {
   const [user] = useAtom(userAtom);
   const [, setUser] = useAtom(userAtom);
+  const [gameWon, setGameWon] = useAtom(gameWonAtom)
 
   useEffect(() => {
+    
     const token = Cookies.get('token');
     const id = Cookies.get('id');
     const username = Cookies.get('username');
