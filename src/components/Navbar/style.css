@@ -1,0 +1,11 @@
+.navbar,
+.nav-title,
+.nav-links {
+  color: white;
+}
+
+.navbar:hover,
+.nav-title:hover,
+.nav-links:hover{
+  color: white;
+}

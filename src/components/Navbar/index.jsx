@@ -11,28 +11,28 @@ const NavBar = () => {
   const [userInfo] = useAtom(userAtom);
 
   return (
-    <Navbar className="Navbar">
+    <Navbar className="navbar">
       <Container>
-        <Navbar.Brand as={Link} to="/" className="BrandTitle">
+        <Navbar.Brand as={Link} to="/" className="nav-title">
           Wordle
         </Navbar.Brand>
         <Nav className="links">
           {userInfo.isLoggedIn ? (
             <>
-              <Nav.Link as={Link} to="/statistics" className="Navlinks">
+              <Nav.Link as={Link} to="/statistics" className="nav-links">
                 Statistics
               </Nav.Link>
-              <Nav.Link as={Link} to="/parameters" className="Navlinks">
+              <Nav.Link as={Link} to="/parameters" className="nav-links">
                 Parameters
               </Nav.Link>
               <LogoutButton />
             </>
           ) : (
             <>
-              <Nav.Link as={Link} to="/signup" className="Navlinks">
+              <Nav.Link as={Link} to="/signup" className="nav-links">
                 Sign up
               </Nav.Link>
-              <Nav.Link as={Link} to="/signin" className="Navlinks">
+              <Nav.Link as={Link} to="/signin" className="nav-links">
                 Sign in
               </Nav.Link>
             </>

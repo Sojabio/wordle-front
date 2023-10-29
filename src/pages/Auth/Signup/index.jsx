@@ -41,13 +41,13 @@ function Signup () {
         Cookies.set('token', data.accessToken);
         Cookies.set('id', data.id);
         Cookies.set('username', data.username);
-        
-        console.log(data)
+
+        console.log(`data signup ${data.accesToken}${data.id}`)
         setUser({
           isLoggedIn: true,
           token: data.accessToken,
           id: data.id,
-          username: data.username
+          username: username
         });
 
         navigate('/')

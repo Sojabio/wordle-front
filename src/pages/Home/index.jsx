@@ -1,6 +1,9 @@
 import { useAtom } from 'jotai';
 import { userAtom } from '../../stores/userAtom';
 
+import Grid from '../../components/Game/Grid';
+import Keyboard from '../../components/Game/Keyboard';
+
 const Home = () => {
   const [user] = useAtom(userAtom);
 
@@ -11,15 +14,13 @@ const Home = () => {
 
   return (
     <>
-    {user.isLoggedIn ? (
-    <> homepage du wordle de {user.username}
-    </>
-    ) : (
-      <>
-      homepage du wordle
-      </>
-    )
-  }
+      {user.isLoggedIn ? (
+      <> homepage du wordle de {user.username} </>
+      ) : (
+        <> homepage du wordle </>
+      )}
+      <Grid />
+      <Keyboard />
     </>
   )
 }
