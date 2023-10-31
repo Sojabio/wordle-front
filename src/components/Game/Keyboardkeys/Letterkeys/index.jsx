@@ -1,6 +1,6 @@
-import './style.css'
+import '../style.css'
 
-function Key({letter, isSelected, onClick}) {
+function Letterkey({letter, isSelected, onClick}) {
 
   const keyClassName = `key ${isSelected ? 'key-selected' : 'key'}`
 
@@ -11,4 +11,4 @@ function Key({letter, isSelected, onClick}) {
   )
 }
 
-export default Key
+export default Letterkey

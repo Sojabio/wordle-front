@@ -20,7 +20,7 @@ function Grid() {
   const [currentGuess, setCurrentGuess] = useAtom(currentGuessAtom);
   const [grid, setGrid] = useState(initialGrid);
   const [guesses, setGuesses] = useAtom(guessesAtom);
-  const [winGame, setWinGame] = useAtom(gameWonAtom);
+  const [gameWon, setGameWon] = useAtom(gameWonAtom);
   const [letterStatuses, setLetterStatuses] = useState([
     [null, null, null, null, null],
     [null, null, null, null, null],
@@ -52,12 +52,13 @@ function Grid() {
 };
 
 
+
   const processGuess = () => {
     if (guesses.length < 5) {
       const guessString = currentGuess.join('');
       if (guessString === mysteryWord) {
         console.log("win")
-        // winGame()
+        winGame()
       } else if (wordList.includes(guessString)) {
         console.log('try again');
         evalLetters(guessString)
@@ -73,6 +74,14 @@ function Grid() {
     }
   };
 
+  const winGame = () => {
+    const newLetterStatuses = [...letterStatuses];
+    for (let i = 0; i < 5; i++) {
+      newLetterStatuses[guesses.length][i] = "perfect";
+    }
+    setLetterStatuses(newLetterStatuses);
+    setGameWon(true);
+  }
 
   const evalLetters = (guessString) => {
     const rowIndex = guesses.length;
@@ -89,6 +98,8 @@ function Grid() {
     }
     setLetterStatuses(newLetterStatuses);
 };
+
+
 
 
   const updateGrid = () => {
