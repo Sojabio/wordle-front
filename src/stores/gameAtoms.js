@@ -1,8 +1,9 @@
 import { atom } from 'jotai';
 
-export const currentGuessAtom = atom([]);
+export const guessesAtom = atom([]);
 
-export const guessCounterAtom = atom(0);
+export const currentGuessAtom = atom(['','','','','']);
+
 
 export const gameOverAtom = atom(false);
 
